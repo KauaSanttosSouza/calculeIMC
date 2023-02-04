@@ -1,0 +1,203 @@
+:root {
+  font-size: 62.5%; /*deixa todas as fontes com 62.5% ddo seu tamanho*/
+
+  /* CORES */
+  --tt-heading: #0C3440;
+
+  --tt-label: #00453A;
+  --tt-label: #00211c;
+  --tt-input: #212529;
+  --ot-input: rgba(2, 121, 157, 1);
+  --bd-input: rgba(73, 80, 87, 0.3);
+  --tt-placeholder: rgba(73, 80, 87, 0.5);
+  --bg-input: rgba(220, 226, 233, 1);
+  
+  --tt-button: white;
+  --bg-button: rgba(2, 121, 157, 1);
+  --bg-button-hover: rgb(0, 88, 115);
+  
+  --tt-error: white;
+  --bg-error: rgba(240, 62, 62, 1);
+
+  --bg-modal: rgba(0, 0, 0, 0.7);
+}
+
+* {
+  padding: 0; /*zera o padding*/
+  margin: 0; /*zera o margin*/
+  box-sizing: border-box; /*Faz com que as "caixas" do css, mantenham seu tamanho*/
+}
+
+body {
+  background-color: #040924; /*cor de fundo do body*/
+  /*font-size: 1.6rem;*/ /*deixou todas as fontes com 16px */
+}
+
+body, input, button {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.6rem; /*Agora ele se aplica a todos as coisas*/
+}
+
+.container{
+  display: grid; /*Abre as funcionalidas do grid*/
+  height: 100vh; /*Deixa o card pegando 100% da altura da tela*/
+  place-items: center; /*Centraliza os itens, deixando o car to tamanho desejado*/
+  padding: 1.6rem;
+}
+
+.card {
+  padding: 4.8rem 6.4rem 6.4rem; /*Coloca os preenchimentos do car*/
+  background-color: white; /*cor de fundo do card*/
+  width: min(42.8rem, 100%); /*Faz com que ele posso diminuir, mas não aumentar*/
+  margin-inline: auto; /*alinhou ao centro*/
+
+  box-shadow: 0rem 0.2rem 0.4rem rgba(0, 0, 0, 0.1);/*sombra no card*/
+  border-radius: .6rem; /*arredondou os cantos*/
+}
+
+.tittle { /*Colocamos essas caracteristicas na class tittle, pq o h2 tbm está nessa classe*/
+  font-weight: 700;
+  font-size: 3.2rem;
+  line-height: 4rem;
+
+  color: var(--tt-heading)
+}
+
+form {
+  width: min(30rem, 100%);
+}
+
+form h1 { /*Não colocamos essas informações na class tittle, pq o h2 esta na mesma class*/
+  margin-bottom: 3.2rem;
+}
+
+form label {
+  font-size: min(1.4rem);
+  line-height: 1.8rem;
+  color: var(--tt-label);
+
+  display: block; /*Temos que colocar o display block pq se não, não conseguimos colocar o margin-bottom*/
+  margin-bottom: .8rem;
+}
+
+form label:hover {
+  color: var(--tt-label-hover);
+  font-weight: 700;
+}
+
+form input {
+  width: 100%;
+  padding: 1.6rem;
+  background-color: var(--bg-input);
+
+  border-radius: .4rem;
+  border: 1px solid var(--bd-input);
+}
+
+form input:focus {
+  outline: 2px solid var(--ot-input);
+}
+
+form input::placeholder { /*Numerosinho de exemplo dentro do input*/
+  color: var(--tt-placeholder);
+}
+
+.input-container + .input-container { /*o input-container que tiver outro input-container antes vai receber essas propriedades*/
+  margin-top: 1.6rem;
+}
+
+form button {
+  font-weight: 700;
+  color: var(--tt-button);
+
+  background: var(--bg-button);
+  width: 100%;
+  padding: 1.6rem ;
+  border: none;
+  margin-top: 3.2rem;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+
+  transition: background .5s; /*para mudar de background devagar*/
+  cursor: pointer; /*muda o ponteiro quando vc passa o mouse encima*/
+}
+
+form button:hover {
+  background: var(--bg-button-hover);
+  scale: 1.02;
+}
+
+/*MODAL*/
+
+.modal-container.open { /*O modal-container só aparece quando existe a class open*/
+  opacity: 1; /*faz ficar visivel*/
+  visibility: visible; /*faz aparecer na tela*/
+
+    transform: translateY(0px);
+}
+
+.modal-container {
+  background: var(--bg-modal);
+  position: absolute;
+  inset: 0; /*Quando os top, button, rigth, left são iguais a 0, podem ser substituidos por inset*/
+  
+  display: grid;
+  place-content: center;
+
+  opacity: 0; /*faz ficar invisivel*/
+  visibility: hidden; /*faz sumir da tela*/
+
+  transform: translateY(-600px);
+  transition: transform .6s;
+}
+
+.modal {
+  position: relative; /*Faz com que o button tenha seu posicionamento absoluto relacionado ao modal*/
+}
+
+.modal button {
+  background: none; /*sem fundo*/
+  border: none; /*sem borda*/
+
+  position: absolute; /*diz que o posicionamente dele é sobreposto a tudo que esta na tela, mas está relativo detro do modal*/
+  top: 1.6rem;
+  right: 1.6rem;
+
+  transition: transform .3s;
+  cursor: pointer;
+}
+.modal button:hover {
+  transform: scale(1.2);
+}
+
+/*ALERT ERROR*/
+
+.alert-error.open{
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0px);
+}
+
+.alert-error {
+  background: var(--bg-error);
+  color: var(--tt-error);
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  font-weight: 700;
+  padding: .8rem 0;
+  text-align: center;
+
+  opacity: 0;
+  visibility: hidden;
+  
+  transform: translateY(-30px);
+  transition: transform .5s;
+}

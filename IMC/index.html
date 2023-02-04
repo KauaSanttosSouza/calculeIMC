@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <!--FONTS-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!--META-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora IMC</title>
+  
+  <!--STYLE-->
+  <link rel="stylesheet" href="style.css">
+  <script src="./js/script.js" type="module" defer></script> <!--Sempre coloca o type="module" se não, não conseguimos fazer a importação e exportação-->
+
+</head>
+<body>
+  <div class="alert-error ">
+    Digite apenas números
+  </div>
+
+  <div class="container">
+    <main class="card">
+      <form>
+        <h1 class="tittle">Cálculo de IMC</h1>
+
+        <div class="input-container">
+          <label for="weight">Peso (kg)</label> <!--Nome em cima do input-->
+          <input 
+            type="number" 
+            id="weight"
+            placeholder="60"> <!--Numerozinho transparente dentro do input-->
+        </div>
+
+        <div class="input-container"> <!--Nome em cima do input-->
+          <label for="heigth">Altura (cm)</label>
+          <input 
+            type="number" 
+            id="height"
+            placeholder="165"> <!--Numerozinho transparente dentro do input-->
+        </div>
+        
+        <button>
+          Calcular IMC <img src="./assets/arrow.svg" alt="seta para direita">
+        </button>
+      </form>
+    </main>
+  </div>
+
+  <div class="modal-container">
+    <div class="modal card">
+      <h2 class="tittle">
+        <span>Seu IMC é de 28</span>
+      <button> 
+        <img src="./assets/close.svg" alt="close window">
+      </button>
+
+    </h2>
+    </div>
+  </div>
+</body>
+</html>
